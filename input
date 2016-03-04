@@ -1,16 +1,18 @@
 
 the input netlist:
 
+.model myRes resistor
+
 .subckt sub1 1 2 
-r1 1 2
+r1 1 2 myRes
 .ends
 
 .subckt sub2 1 2 
-r2 1 2
+r2 1 2 myRes
 x21 1 2 sub1
 .ends
 
 x1 n1 n2 sub1
 x2 n2 n3 sub1
 x3 n3 n4 sub2
-r3 n1 n4
+r3 n1 n4 myRes
