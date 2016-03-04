@@ -1,0 +1,12 @@
+# edb
+
+x1( 1:n1 2:n2 )sub1
+nterm=2, nlocal=0 Locals={} Alias={} params {}
+   r1 ( 1 2 ) resistor    params { r=1} 
+x2( 1:n2 2:n3 )sub1
+nterm=2, nlocal=0 Locals={} Alias={} params {}
+   r1 ( 1 2 ) resistor    params { r=2} 
+x3( 1:n3 2:n4 )sub2
+nterm=2, nlocal=0 Locals={} Alias={} params {}
+   r2 ( 1 2 ) resistor    params { r=100 m=1} 
+r3 ( n1 n4 ) resistor params { r=3 m=1} 
