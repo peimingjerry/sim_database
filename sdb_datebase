@@ -1,0 +1,56 @@
+# SDB:
+
+<?xml version="1.0" encoding="US-ASCII" standalone="yes"?>
+<design>
+    <file name=":test.ckt">
+        <title>.</title>
+        <inst filename="test.ckt" line="11" name=".x1" mtype="Subckt" master=".sub1">
+            <param name=".r" value="1"/>
+            <node name=".n1"/>
+            <node name=".n2"/>
+        </inst>
+        <inst filename="test.ckt" line="12" name=".x2" mtype="Subckt" master=".sub1">
+            <param name=".r" value="2"/>
+            <node name=".n2"/>
+            <node name=".n3"/>
+        </inst>
+        <inst filename="test.ckt" line="13" name=".x3" mtype="Subckt" master=".sub2">
+            <node name=".n3"/>
+            <node name=".n4"/>
+        </inst>
+        <subckt filename="test.ckt" line="2" name=".sub1">
+            <term name=".1"/>
+            <term name=".2"/>
+            <paramdef filename="test.ckt" line="3" name=".r" value="100" redefinable="true"/>
+            <inst filename="test.ckt" line="4" name=".r1" mtype="Resistor" master=".resistor">
+                <param name=".r" value="r"/>
+                <node name=".1"/>
+                <node name=".2"/>
+            </inst>
+        </subckt>
+        <subckt filename="test.ckt" line="7" name=".sub2">
+            <term name=".1"/>
+            <term name=".2"/>
+        </subckt>
+    </file>
+</design>
+<liteinst>
+    <file name=":test.ckt">
+        <inst filename=`optimized line=`optimized name=".r3" mtype="Resistor" master="resistor">
+            <param name="r" value="3"/>
+            <param name="m" value="1"/>
+            <node name=".n1"/>
+            <node name=".n4"/>
+        </inst>
+        <subckt filename="test.ckt" line="7" name=".sub2">
+            <inst filename=`optimized line=`optimized name=".r2" mtype="Resistor" master="resistor">
+                <param name="r" value="100"/>
+                <param name="m" value="1"/>
+                <node name=".1"/>
+                <node name=".2"/>
+            </inst>
+        </subckt>
+        <subckt filename="test.ckt" line="2" name=".sub1">
+        </subckt>
+    </file>
+</liteinst>
