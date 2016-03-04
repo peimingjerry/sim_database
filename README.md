@@ -1,4 +1,3 @@
-# sim_database
 
 the input netlist:
 
