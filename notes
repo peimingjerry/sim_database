@@ -1,2 +1,8 @@
 
 1. top level block should have a flag to tag it. such as, the parent block is None.
+2. getSubcktDDB could be changed to member function of subcktDefn
+3. the subckt master should not create define database if not instantialized.
+4. Q: why is terminal Uid used in subckt defn?
+5. I did not create param defn in define database. but for complex purpos, they did that
+6. Q: how to find master of instance, that is not defined in current scope? A: accending to the parents and find
+7. edb should have its own nodes, say seNet they did. to hold parent instance, is leaf or so
