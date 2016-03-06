@@ -1,21 +1,23 @@
 # ddb
 
+parameters temp=27
+parameters time=0
+parameters tnom=27
 subckt sub1 ( 1 2 ) ordered_Locals { } 
    parameters r=100
-   r1 ( 1 2 ) resistor r=r 
-   // mosType of r1 is x
+   parameters tc1=1
+   r1 ( 1 2 ) myRes r=r tc1=tc1 tc1c=tc1
 ends
 
 subckt sub2 ( 1 2 ) ordered_Locals { } 
-   r2 ( 1 2 ) resistor r=100
-   // mosType of r2 is x
+   parameters r=100
+   parameters tc1=1
+   r2 ( 1 2 ) myRes r=r 
+   x21 ( 1 2 ) sub1 r=r tc1=tc1
 ends
 
-x1 ( n1 n2 ) sub1 r=1 
-// mosType of x1 is x
+model myRes resistor
+x1 ( n1 n2 ) sub1
 x2 ( n2 n3 ) sub1 r=2 
-// mosType of x2 is x
-x3 ( n3 n4 ) sub2
-// mosType of x3 is x
-r3 ( n1 n4 ) resistor r=3 
-// mosType of r3 is x
+x3 ( n3 n4 ) sub2 r=3 tc1=3 tc2=3
+r3 ( n1 n4 ) myRes r=4 tc1=1 tc1c=1 tc2=2 tc2c=2
